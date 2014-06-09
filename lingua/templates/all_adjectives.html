@@ -1,0 +1,30 @@
+{% extends "header_base.html" %}
+{% load staticfiles %}
+<body>
+{% block content %}
+	<div class="my_content">
+		{% if adjectives_list %}
+			<table id="content">
+				<tr>
+					<th> English </th>
+					<th> Italian Singular (m/f) </th>
+					<th> Italian Plural (m/f) </th>
+				</tr>
+				{% for adjective in adjectives_list %}
+					{% if forloop.counter0|divisibleby:2 %}
+						<tr class="alt">
+					{% else %}
+						<tr>
+					{% endif %}
+					<td>  {{ adjective.english }} </td>
+					<td>  {{ adjective.italian_single_masculine }} / {{ adjective.italian_single_feminine }} </td>
+					<td>  {{ adjective.italian_plural_masculine }} / {{ adjective.italian_plural_feminine }} </td>
+					</tr>
+				{% endfor %}
+			</table>
+		{% else %}
+			<p> There are no adjectives in your dictionary at the moment </p>
+		{% endif %}
+	</div>
+{% endblock %}
+</body>

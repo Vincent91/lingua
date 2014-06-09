@@ -1,0 +1,42 @@
+{% extends "header_base.html" %}
+{% load staticfiles %}
+<body>
+{% block content %}
+	<div class="my_content">
+		{% if verbs_list %}
+			<table id="content">
+				<tr>
+					<th> English Infinitive </th>
+					<th> Italian Infinitive </th>
+					<th> Conjugation </th>
+					<th> Io </th>
+					<th> Tu </th>
+					<th> Lei/Lui </th>
+					<th> Noi </th>
+					<th> Voi </th>
+					<th> Essi/esse </th>
+				</tr>
+				{% for verb in verbs_list %}
+					{% if forloop.counter0|divisibleby:2 %}
+						<tr class="alt">
+					{% else %}
+						<tr>
+					{% endif %}
+					<td>  {{ verb.english_infinitive }} </td>
+					<td>  {{ verb.italian_infinitive }} </td>
+					<td>  {{ verb.italian_conjugation }} </td>
+					<td>  {{ verb.italian_io }} </td>
+					<td>  {{ verb.italian_tu }} </td>
+					<td>  {{ verb.italian_lei }} </td>
+					<td>  {{ verb.italian_noi }} </td>
+					<td>  {{ verb.italian_voi }} </td>
+					<td>  {{ verb.italian_essi }} </td>
+					</tr>
+				{% endfor %}
+			</table>
+		{% else %}
+			<p> There are no verbs in your dictionary at the moment </p>
+		{% endif %}
+	</div>
+{% endblock %}
+</body>

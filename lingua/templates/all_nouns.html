@@ -1,0 +1,30 @@
+{% extends "header_base.html" %}
+{% load staticfiles %}
+<body>
+{% block content %}
+	<div class="my_content">
+		{% if nouns_list %}
+			<table id="content">
+				<tr>
+					<th> English </th>
+					<th> Italian Singular </th>
+					<th> Italian Plural </th>
+				</tr>
+				{% for noun in nouns_list %}
+					{% if forloop.counter0|divisibleby:2 %}
+						<tr class="alt">
+					{% else %}
+						<tr>
+					{% endif %}
+					<td>  {{ noun.english_single }} </td>
+					<td>  {{ noun.italian_single_article }} {{ noun.italian_single }} </td>
+					<td>  {{ noun.italian_plural_article }} {{ noun.italian_plural }} </td>
+					</tr>
+				{% endfor %}
+			</table>
+		{% else %}
+			<p> There are no nouns in your dictionary at the moment </p>
+		{% endif %}
+	</div>
+{% endblock %}
+</body>
