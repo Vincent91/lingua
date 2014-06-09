@@ -1,0 +1,1 @@
+A small application to help me learn Italian language and Django.
