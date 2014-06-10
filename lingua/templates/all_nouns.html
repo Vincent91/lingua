@@ -5,7 +5,7 @@
 	<div class="my_noun_adder">
 		<form id="noun_form" action="{% url 'nouns:all_nouns' %}" method="post">
 			{% csrf_token %}
-			{{ form.as_p  }}
+			{{ form.as_p }}
 			<input type="submit" name="save" value="Add Noun"/>
 		</form>
 	</div>

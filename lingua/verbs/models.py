@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 
+from django.forms import ModelForm
+
 # Create your models here.
 class Verb(models.Model):
 	english_infinitive = models.CharField(max_length = 100)
@@ -17,3 +19,9 @@ class Verb(models.Model):
 	def __unicode__(self):
 		return self.english_infinitive + " " + self.italian_infinitive
 
+class VerbForm(ModelForm):
+	class Meta:
+		model = Verb
+		fields = ['english_infinitive', 'italian_infinitive', 'italian_conjugation',
+				'italian_io', 'italian_tu', 'italian_lei',
+				'italian_noi', 'italian_voi', 'italian_essi']

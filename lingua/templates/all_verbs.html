@@ -2,6 +2,13 @@
 {% load staticfiles %}
 <body>
 {% block content %}
+	<div class="my_verb_adder">
+		<form id="verb_form" action="{% url 'verbs:all_verbs' %}" method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" name="save" value="Save Verb"/>
+		</form>
+	</div>
 	<div class="my_content">
 		{% if verbs_list %}
 			<table id="content">
