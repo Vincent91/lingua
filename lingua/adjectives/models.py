@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.forms import ModelForm
 
 # Create your models here.
 class Adjective(models.Model):
@@ -12,3 +13,10 @@ class Adjective(models.Model):
 
 	def __unicode__(self):
 		return self.english + " " + self.italian_single_masculine
+
+
+class AdjectiveForm(ModelForm):
+	class Meta:
+		model = Adjective
+		fields = ['english', 'italian_single_masculine', 'italian_single_feminine', 
+				  'italian_plural_masculine', 'italian_plural_feminine']

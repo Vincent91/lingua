@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.forms import ModelForm
 
 # Create your models here.
 class Noun(models.Model):
@@ -21,3 +22,7 @@ class Noun(models.Model):
 	def __unicode__(self):
 		return self.italian_single_article + " " + self.italian_single
 
+class NounForm(ModelForm):
+	class Meta:
+		model = Noun
+		fields = ['english_single', 'italian_single', 'italian_single_article', 'italian_plural', 'italian_plural_article']
