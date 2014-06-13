@@ -7,5 +7,6 @@ urlpatterns = patterns('',
     url(r'^nouns/', include('nouns.urls', namespace = 'nouns')),
     url(r'^verbs/', include('verbs.urls', namespace = 'verbs')),
     url(r'^adjectives/$', include('adjectives.urls', namespace = 'adjectives')),
+    url(r'^miscellaneous/$', include('miscellaneous.urls', namespace = 'miscellaneous')),
     url(r'^admin/', include(admin.site.urls)),
 )

@@ -1,0 +1,35 @@
+{% extends "header_base.html" %}
+{% load staticfiles %}
+<body>
+{% block content %}
+	<div class="my_misc_adder">
+		<form id="misc_form" action="{% url 'miscellaneous:all_miscs' %}" method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" name="save" value="Add Misc"/>
+		</form>
+	</div>
+	<div class="my_content">
+		{% if miscs_list %}
+			<table id="content">
+				<tr>
+					<th> English </th>
+					<th> Italian </th>
+				</tr>
+				{% for misc in miscs_list %}
+					{% if forloop.counter0|divisibleby:2 %}
+						<tr class="alt">
+					{% else %}
+						<tr>
+					{% endif %}
+					<td>  {{ misc.english_phrase }} </td>
+					<td>  {{ misc.italian_phrase }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		{% else %}
+			<p> There are no miscs in your dictionary at the moment </p>
+		{% endif %}
+	</div>
+{% endblock %}
+</body>

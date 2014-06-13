@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'nouns',
     'verbs',
     'adjectives',
+    'miscellaneous',
 )
 
 MIDDLEWARE_CLASSES = (
