@@ -9,13 +9,14 @@
 			<input type="submit" name="save" value="Add Noun"/>
 		</form>
 	</div>
+	<a id="revelator" href="#" data-reveal-id="myModal" data-animation="fade"></a>
 	<div class="my_content">
 		{% if nouns_list %}
 			<table id="content">
 				<tr>
-					<th> English </th>
-					<th> Italian Singular </th>
-					<th> Italian Plural </th>
+					<th> Available Nouns </th>
+					<!-- <th> Italian Singular </th> -->
+					<!-- <th> Italian Plural </th> -->
 				</tr>
 				{% for noun in nouns_list %}
 					{% if forloop.counter0|divisibleby:2 %}
@@ -23,9 +24,11 @@
 					{% else %}
 						<tr>
 					{% endif %}
-					<td>  {{ noun.english_single }} </td>
-					<td>  {{ noun.italian_single_article }} {{ noun.italian_single }} </td>
-					<td>  {{ noun.italian_plural_article }} {{ noun.italian_plural }} </td>
+					<td attributeES="{{ noun.english_single }}" attributeIS="{{ noun.italian_single }}" attributeISA="{{ noun.italian_single_article }}" attributeIP="{{ noun.italian_plural }}" attributeIPA="{{ noun.italian_plural_article }}">  
+						{{ noun.english_single }} - {{ noun.italian_single_article}} {{ noun.italian_single }} 
+					</td>
+					<!-- <td>  {{ noun.italian_single_article }} {{ noun.italian_single }} </td> -->
+					<!-- <td>  {{ noun.italian_plural_article }} {{ noun.italian_plural }} </td> -->
 					</tr>
 				{% endfor %}
 			</table>
@@ -33,5 +36,13 @@
 			<p> There are no nouns in your dictionary at the moment </p>
 		{% endif %}
 	</div>
+	<div id="myModal" class="reveal-modal">
+			<h1>Reveal Modal Goodness</h1>
+			<p>This is a default modal in all its glory, but any of the styles here can easily be changed in the CSS.</p>
+			<a class="close-reveal-modal">&#215;</a>
+	</div>
+{% endblock %}
+{% block script %}
+	<script type="text/javascript" src="{% static "jquery.filler.js" %}"></script>	
 {% endblock %}
 </body>
