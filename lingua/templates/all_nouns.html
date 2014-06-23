@@ -2,19 +2,16 @@
 {% load staticfiles %}
 <body>
 {% block content %}
-	<div class="my_noun_adder">
-		<form id="noun_form" action="{% url 'nouns:all_nouns' %}" method="post">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<input type="submit" name="save" value="Add Noun"/>
-		</form>
-	</div>
 	<a id="revelator" href="#" data-reveal-id="myModal" data-animation="fade"></a>
 	<div class="my_content">
 		{% if nouns_list %}
 			<table id="content">
 				<tr>
-					<th> Available Nouns </th>
+					<th> Available Nouns 
+						<a id="revelatorForm" href="#" data-reveal-id="myModalNounForm" data-animation="fade">
+							+ 
+						</a> 
+					</th>
 					<!-- <th> Italian Singular </th> -->
 					<!-- <th> Italian Plural </th> -->
 				</tr>
@@ -40,6 +37,16 @@
 			<h1 >Reveal Modal Goodness</h1>
 			<p>This is a default modal in all its glory, but any of the styles here can easily be changed in the CSS.</p>
 			<a class="close-reveal-modal">&#215;</a>
+	</div>
+	<div id="myModalNounForm" class="reveal-modal">
+		<div class="my_noun_adder">
+			<form id="noun_form" action="{% url 'nouns:all_nouns' %}" method="post">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" name="save" value="Add Noun"/>
+			</form>
+		</div>
+		<a class="close-reveal-modal">&#215;</a>
 	</div>
 {% endblock %}
 </body>

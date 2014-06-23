@@ -2,26 +2,15 @@
 {% load staticfiles %}
 <body>
 {% block content %}
-	<div class="my_verb_adder">
-		<form id="verb_form" action="{% url 'verbs:all_verbs' %}" method="post">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<input type="submit" name="save" value="Save Verb"/>
-		</form>
-	</div>
 	<div class="my_content">
 		{% if verbs_list %}
 			<table id="content">
 				<tr>
-					<th> English Infinitive </th>
-					<th> Italian Infinitive </th>
-					<th> Conjugation </th>
-					<th> Io </th>
-					<th> Tu </th>
-					<th> Lei/Lui </th>
-					<th> Noi </th>
-					<th> Voi </th>
-					<th> Essi/esse </th>
+					<th> Available Verbs 
+						<a id="revelatorForm" href="#" data-reveal-id="myModalVerbForm" data-animation="fade">
+							+
+						</a>
+					</th>
 				</tr>
 				{% for verb in verbs_list %}
 					{% if forloop.counter0|divisibleby:2 %}
@@ -44,6 +33,16 @@
 		{% else %}
 			<p> There are no verbs in your dictionary at the moment </p>
 		{% endif %}
+	</div>
+	<div id="myModalVerbForm" class="reveal-modal">
+		<div class="my_verb_adder">
+			<form id="verb_form" action="{% url 'verbs:all_verbs' %}" method="post">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" name="save" value="Save Verb"/>
+			</form>
+		</div>
+		<a class="close-reveal-modal">&#215;</a>
 	</div>
 {% endblock %}
 </body>

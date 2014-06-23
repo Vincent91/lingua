@@ -2,19 +2,15 @@
 {% load staticfiles %}
 <body>
 {% block content %}
-	<div class="my_adjective_adder">
-		<form id="adjective_form" action="{% url 'adjectives:all_adjectives' %}" method="post">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<input type="submit" name="save" value="Add Adjective"/>
-		</form>
 	<div class="my_content">
 		{% if adjectives_list %}
 			<table id="content">
 				<tr>
-					<th> English </th>
-					<th> Italian Singular (m/f) </th>
-					<th> Italian Plural (m/f) </th>
+					<th> Available Adjectives
+						<a id="revelatorForm" href="#" data-reveal-id="myModalAdjectiveForm" data-animation="fade">
+							+
+						</a>
+					</th>
 				</tr>
 				{% for adjective in adjectives_list %}
 					{% if forloop.counter0|divisibleby:2 %}
@@ -31,6 +27,16 @@
 		{% else %}
 			<p> There are no adjectives in your dictionary at the moment </p>
 		{% endif %}
+	</div>
+	<div id="myModalAdjectiveForm" class="reveal-modal">
+		<div class="my_adjective_adder">
+			<form id="adjective_form" action="{% url 'adjectives:all_adjectives' %}" method="post">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" name="save" value="Add Adjective"/>
+			</form>
+		</div>
+		<a class="close-reveal-modal">&#215;</a>
 	</div>
 {% endblock %}
 </body>
