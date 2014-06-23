@@ -30,7 +30,12 @@
 				{% endfor %}
 			</table>
 		{% else %}
-			<p> There are no nouns in your dictionary at the moment </p>
+			<p> 
+				There are no nouns in your dictionary at the moment. 
+				<a id="revelatorForm" href="#" data-reveal-id="myModalNounForm" data-animation="fade">
+					New+
+				</a> 
+			</p>
 		{% endif %}
 	</div>
 	<div id="myModal" class="reveal-modal">

@@ -2,9 +2,10 @@
 {% load staticfiles %}
 <body>
 {% block content %}
+	<a id="revelator" href="#" data-reveal-id="myModal" data-animation="fade"></a>
 	<div class="my_content">
 		{% if miscs_list %}
-			<table id="content">
+			<table id="content" class="miscContent">
 				<tr>
 					<th> Available Misc 
 						<a id="revelatorForm" href="#" data-reveal-id="myModalMiscForm" data-animation="fade">
@@ -18,13 +19,25 @@
 					{% else %}
 						<tr>
 					{% endif %}
-					<td>  {{ misc.english_phrase }} - {{ misc.italian_phrase }} </td>
+					<td attributeEP="{{ misc.english_phrase }}" attributeIP="{{ misc.italian_phrase }}">  
+						{{ misc.english_phrase }} - {{ misc.italian_phrase }} 
+					</td>
 					</tr>
 				{% endfor %}
 			</table>
 		{% else %}
-			<p> There are no miscs in your dictionary at the moment </p>
+			<p> 
+				There are no miscs in your dictionary at the moment 
+				<a id="revelatorForm" href="#" data-reveal-id="myModalMiscForm" data-animation="fade">
+					New+
+				</a>
+			</p>
 		{% endif %}
+	</div>
+	<div id="myModal" class="reveal-modal">
+			<h1 >Reveal Modal Goodness</h1>
+			<p>This is a default modal in all its glory, but any of the styles here can easily be changed in the CSS.</p>
+			<a class="close-reveal-modal">&#215;</a>
 	</div>
 	<div id="myModalMiscForm" class="reveal-modal">
 		<div class="my_misc_adder">

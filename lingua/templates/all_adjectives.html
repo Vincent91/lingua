@@ -2,9 +2,10 @@
 {% load staticfiles %}
 <body>
 {% block content %}
+	<a id="revelator" href="#" data-reveal-id="myModal" data-animation="fade"></a>
 	<div class="my_content">
 		{% if adjectives_list %}
-			<table id="content">
+			<table id="content" class="adjectiveContent">
 				<tr>
 					<th> Available Adjectives
 						<a id="revelatorForm" href="#" data-reveal-id="myModalAdjectiveForm" data-animation="fade">
@@ -18,15 +19,27 @@
 					{% else %}
 						<tr>
 					{% endif %}
-					<td>  {{ adjective.english }} </td>
-					<td>  {{ adjective.italian_single_masculine }} / {{ adjective.italian_single_feminine }} </td>
-					<td>  {{ adjective.italian_plural_masculine }} / {{ adjective.italian_plural_feminine }} </td>
+					<td attributeEF="{{ adjective.english }}" attributeISM="{{ adjective.italian_single_masculine }}"
+					attributeISF="{{ adjective.italian_single_feminine }}" attributeIPM="{{ adjective.italian_plural_masculine }}"
+					attributeIPF="{{ adjective.italian_plural_feminine }}">  
+						{{ adjective.english }} - {{ adjective.italian_single_masculine }}
+					</td>
 					</tr>
 				{% endfor %}
 			</table>
 		{% else %}
-			<p> There are no adjectives in your dictionary at the moment </p>
+			<p> 
+				There are no adjectives in your dictionary at the moment 
+				<a id="revelatorForm" href="#" data-reveal-id="myModalAdjectiveForm" data-animation="fade">
+					New+
+				</a>
+			</p>
 		{% endif %}
+	</div>
+	<div id="myModal" class="reveal-modal">
+			<h1 >Reveal Modal Goodness</h1>
+			<p>This is a default modal in all its glory, but any of the styles here can easily be changed in the CSS.</p>
+			<a class="close-reveal-modal">&#215;</a>
 	</div>
 	<div id="myModalAdjectiveForm" class="reveal-modal">
 		<div class="my_adjective_adder">
