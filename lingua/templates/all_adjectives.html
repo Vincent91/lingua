@@ -33,7 +33,7 @@
 			<form id="adjective_form" action="{% url 'adjectives:all_adjectives' %}" method="post">
 				{% csrf_token %}
 				{{ form.as_p }}
-				<input type="submit" name="save" value="Add Adjective"/>
+				<input type="submit" name="save" value="Save Adjective"/>
 			</form>
 		</div>
 		<a class="close-reveal-modal">&#215;</a>

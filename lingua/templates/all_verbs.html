@@ -2,9 +2,10 @@
 {% load staticfiles %}
 <body>
 {% block content %}
+	<a id="revelator" href="#" data-reveal-id="myModal" data-animation="fade"></a>
 	<div class="my_content">
 		{% if verbs_list %}
-			<table id="content">
+			<table id="content" class="verbContent">
 				<tr>
 					<th> Available Verbs 
 						<a id="revelatorForm" href="#" data-reveal-id="myModalVerbForm" data-animation="fade">
@@ -18,21 +19,24 @@
 					{% else %}
 						<tr>
 					{% endif %}
-					<td>  {{ verb.english_infinitive }} </td>
-					<td>  {{ verb.italian_infinitive }} </td>
-					<td>  {{ verb.italian_conjugation }} </td>
-					<td>  {{ verb.italian_io }} </td>
-					<td>  {{ verb.italian_tu }} </td>
-					<td>  {{ verb.italian_lei }} </td>
-					<td>  {{ verb.italian_noi }} </td>
-					<td>  {{ verb.italian_voi }} </td>
-					<td>  {{ verb.italian_essi }} </td>
+					<td attributeEI="{{ verb.english_infinitive }}" attributeII="{{ verb.italian_infinitive }}"
+					attributeIC="{{ verb.italian_conjugation }}" attributeIO="{{ verb.italian_io }}"
+					attributeTU="{{ verb.italian_tu }}" attributeLEI="{{ verb.italian_lei }}"
+					attributeNOI="{{ verb.italian_noi }}" attributeVOI="{{ verb.italian_voi }}" 
+					attributeESSI="{{ verb.italian_essi }}"> 
+						{{verb.english_infinitive }} - {{ verb.italian_infinitive }} ({{ verb.italian_conjugation }})
+					</td>
 					</tr>
 				{% endfor %}
 			</table>
 		{% else %}
 			<p> There are no verbs in your dictionary at the moment </p>
 		{% endif %}
+	</div>
+	<div id="myModal" class="reveal-modal">
+			<h1 >Reveal Modal Goodness</h1>
+			<p>This is a default modal in all its glory, but any of the styles here can easily be changed in the CSS.</p>
+			<a class="close-reveal-modal">&#215;</a>
 	</div>
 	<div id="myModalVerbForm" class="reveal-modal">
 		<div class="my_verb_adder">
